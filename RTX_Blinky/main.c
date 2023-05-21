@@ -9,6 +9,9 @@
 /*
  * main: initialize and start the system
  */
+extern int Init_Thread (void);
+osThreadId main_id;
+
 int main (void) {
   osKernelInitialize ();                    // initialize CMSIS-RTOS
 
@@ -16,6 +19,14 @@ int main (void) {
 
   // create 'thread' functions that start executing,
   // example: tid_name = osThreadCreate (osThread(name), NULL);
+	Init_Thread (); //Add this line
 
   osKernelStart ();                         // start thread execution 
+	
+	main_id = osThreadGetId ();
+
+	while(1)
+	{
+		//Could use main thread as a thread also
+	}
 }
